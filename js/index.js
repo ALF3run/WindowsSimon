@@ -105,17 +105,18 @@ window.onload = function() {
   }
   
   function newSequence() {
-    //Add a new element to the previous sequence of button, increase the 'count' and reset the player moves.
+    //Add a new element to the previous sequence of button, increase the 'count'.
     moves.push(Math.ceil(Math.random()*4));
     document.getElementById('count').innerHTML = moves.length;
-    j = 0;
     
     sequence(0);
     return 0;
   }
   
   function sequence(i) {
-    //Play the sequence, flashing the buttons and playing the sounds.
+    //Play the sequence, flashing the buttons and playing the sounds. Reset player moves.
+    j = 0;
+    
     if(moves[i] === 1) {
       document.getElementById('b-au').play();
       bSq.style.fill = '#0091EA';
