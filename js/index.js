@@ -65,7 +65,7 @@ window.onload = function() {
         //In strict mode, if player fail the game will reset and start over.
         setTimeout(function() {
           moves.length = 0;
-          newSequence(0);
+          newSequence();
         }, 2500);
       }
       //In normal mode, if player fail the game will start over with the same button sequence.
