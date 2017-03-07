@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+html, body  {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body{
+  background:linear-gradient(#1565C0 10%, #42A5F5 80%, #90CAF9);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color:#fff;
+  text-align:center;
+  font-family:'Roboto', sans-serif;
+}
+button{
+  background:linear-gradient(#42A5F5, #1565C0);
+  color:#eee;
+  font-size: 1.1em;
+  border: solid 2px #eee;
+  border-radius: 6px;
+  width: 4em;
+  height: 2em;
+}
+button:hover{
+  background:linear-gradient(#42A5F5, #1565C0 50%);
+}
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  align-content: center;
+  flex-wrap: wrap;
+  height: 100%;
+}
+
+#b-sq:hover,
+#r-sq:hover,
+#g-sq:hover,
+#y-sq:hover{
+  cursor: pointer;
+}
+#b-sq:active{
+  fill:#0091EA !important;
+}
+#r-sq:active{
+  fill:#FF4081 !important;
+}
+#g-sq:active{
+  fill:#00C853 !important;
+}
+#y-sq:active{
+  fill:#FFD600 !important;
+}
+#start:active{
+  background:linear-gradient(#1565C0 80%, #42A5F5);
+}

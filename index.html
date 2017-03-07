@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Always define the charset first to prevent security risk. Look at this page for more info: https://code.google.com/archive/p/doctype-mirror/wikis/ArticleUtf7.wiki -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Windows Simon</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  
+  <body>
+    <div class="flex-container">
+      <svg height="220" width="250">
+        <!-- The <defs> element is used to "define" graphical object, such as gradients, filters, etc. -->
+        <defs>
+          <!-- <filter> element always needs to be nested in a <defs> element. -->
+          <filter id="bumpMap">
+            <!-- <feGaussianBlur> produces a blur effect. The "stdDeviation" attribute determine the blurriness. -->
+            <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur" />
+            <!-- <feSpecularLighting> adds a transparent light effect. It doesn't have any effect if no light surce is defined. The "specularConstant" and the "specularExponent" attributes determine how the light diffuse over the surface. -->
+            <feSpecularLighting in="blur" result="spec" specularConstant="1.1" specularExponent="20" lighting-color="#fff">
+              <!-- <fePointLight> define a point light source. The "z" coordinate determine how much surface the light hits. -->
+              <fePointLight x="125" y="110" z="60"/>
+            </feSpecularLighting>
+            <!-- <feComposite> is used to combine different layer, mask and filter into one. The "operator" attribute define the kind of combination. If it is set on "arithmetic" it's possible to use te constant k1,k2,k3,k4 to determine the final result: k1 = multiply in*in2, k2 = add in, k3 = add in2, k4 = affect all. -->
+            <feComposite in="spec" in2="SourceAlpha" opertaor="in" resoult="spec" />
+            <feComposite in="SourceGraphic" in2="spec" operator="arithmetic" k1="0.7" k2="0.9" k3="0.7" />
+          </filter>
+        </defs>
+        <!-- The <g> element is a "group" element. Transformation applyed to a <g> element are perfomed on all of its child elements -->
+        <g filter="url(#bumpMap)">
+          <!-- Uppercase letters stand for absolute values, lowercase ones for relative values -->
+          <path id="b-sq" d="M 0 200 l 20 -90 q 60 -20 100 0 l -20 90 q -35 -20 -100 0" style="fill:#1565C0;" />
+          <path id="r-sq" d="M 20 105 l 20 -90 q 55 -20 100 0 l -20 90 q -35 -20 -100 0" style="fill:#F44336;" />
+          <path id="g-sq" d="M 125 105 l 20 -90 q 35 20 100 0 l -20 90 q -55 20 -100 0" style="fill:#4CAF50;" />
+          <path id="y-sq" d="M 105 200 l 20 -90 q 40 20 100 0 l -20 90 q -55 20 -100 0" style="fill:#F9A825;" />
+        </g>
+      </svg>
+      
+      <div>
+        <header>
+          <h1>Windows<sup style="font-size:0.4em">&reg;</sup> Simon</h1>
+        </header>
+        <div>
+          <button id="start">Start</button>
+          <button id="strict">Strict</button>
+        </div>
+        <div>
+          <p>Count: <span id="count">--</span></p>
+        </div>
+      </div>
+    </div>
+    
+    <audio id="b-au" src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3" preload="auto"></audio>
+    <audio id="r-au" src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3" preload="auto"></audio>
+    <audio id="g-au" src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3" preload="auto"></audio>
+    <audio id="y-au" src="https://s3.amazonaws.com/freecodecamp/simonSound3.mp3" preload="auto"></audio>
+    <audio id="lose" src="lose.mp3" preload="auto"></audio>
+    <!-- win.mp3 | License: Attribution 3.0 | Recorded by Mike Koenig | http://soundbible.com/711-Fire-Crackers.html -->
+    <audio id="win" src ="win.mp3" preload="auto"></audio>
+    
+    <script src="js/index.js"></script>
+  </body>
+</html>
